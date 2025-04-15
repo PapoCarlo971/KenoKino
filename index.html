@@ -281,6 +281,12 @@
                 width: 80px;
             }
         }
+        .toggler-icon {
+    width: 30px; /* Установите нужный размер */
+    height: 30px;
+    object-fit: contain;
+}
+        
     </style>
 </head>
 <body>
@@ -289,7 +295,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="logo.svg" alt="Логотип"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
-                <span class="navbar-toggler-icon"></span>
+                     <img src="menu.svg" alt="Меню" class="toggler-icon">
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
@@ -463,5 +469,12 @@
             </div>
         </div>
     </div>
+    <script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+        const icon = this.querySelector('.toggler-icon');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        icon.src = isExpanded ? 'close.svg' : 'menu.svg'; // Замените close.svg на ваш файл
+    });
+</script>
 </body>
 </html> 
