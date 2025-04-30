@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-    <title>Ваш сайт</title>
+    <title>Кинопоиск - Фильмы и сериалы</title>
     <style>
         body {
             margin: 0;
@@ -18,17 +17,16 @@
         }
 
         .navbar-brand img {
-            height: 40px;
+            height: clamp(30px, 5vw, 40px);
             width: auto;
             object-fit: contain;
         }
 
         .navbar-nav .nav-link {
             color: white;
-            font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+            font-size: clamp(0.65rem, 1.5vw, 0.875rem);
             margin-left: 0.5rem;
             white-space: nowrap;
-            background-image: url(menu.svg);
         }
 
         .navbar-nav.ms-auto {
@@ -37,14 +35,16 @@
         }
 
         .profile-img {
-            width: 40px;
-            height: 40px;
+            width: clamp(30px, 5vw, 40px);
+            height: clamp(30px, 5vw, 40px);
             object-fit: cover;
             margin-left: 0.5rem;
         }
 
-        .navbar-collapse {
-            flex-grow: 1;
+        .toggler-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
         }
 
         /* Banner section */
@@ -53,7 +53,7 @@
             background-image: url('bg.png');
             background-size: cover;
             background-position: center;
-            min-height: 400px;
+            min-height: clamp(200px, 50vw, 400px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -64,24 +64,24 @@
 
         .banner h2 {
             font-family: 'Comic Sans MS', sans-serif;
-            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-size: clamp(1.25rem, 4vw, 2rem);
             margin: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: normal;
-            max-width: 100%;
+            max-width: 90%;
         }
 
         .banner p {
             font-family: 'Comic Sans MS', sans-serif;
-            font-size: clamp(0.5rem, 2vw, 0.625rem);
+            font-size: clamp(0.75rem, 2vw, 1rem);
             margin-top: 0.5rem;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-            max-width: 100%;
+            max-width: 90%;
         }
 
         /* Content sections */
@@ -91,7 +91,7 @@
 
         .section-title {
             color: darkorange;
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
             margin-bottom: 1rem;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -99,7 +99,6 @@
         }
 
         .movie-card {
-            background-color: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -111,28 +110,26 @@
 
         .movie-card img {
             width: 100%;
-            max-width: 140px;
+            max-width: clamp(100px, 20vw, 140px);
             height: auto;
             object-fit: contain;
             margin-bottom: 0.5rem;
         }
 
         .movie-card .btn {
-            font-size: clamp(0.5rem, 1.5vw, 0.625rem);
+            font-size: clamp(0.625rem, 1.5vw, 0.75rem);
             background-color: blue;
             border: none;
             width: 100%;
-            max-width: 140px;
-            padding: 0.25rem;
+            max-width: clamp(100px, 20vw, 140px);
+            padding: 0.5rem;
             margin-bottom: 0.25rem;
         }
 
         .movie-card p {
             color: green;
-            font-size: clamp(0.6rem, 1.5vw, 0.8125rem);
+            font-size: clamp(0.625rem, 1.5vw, 0.875rem);
             margin: 0;
-            text-align: center;
-            width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -161,7 +158,7 @@
         }
 
         .upcoming-card h4 {
-            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-size: clamp(0.875rem, 2vw, 1.125rem);
             margin-bottom: 0.25rem;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -169,7 +166,7 @@
         }
 
         .upcoming-card p {
-            font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem);
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -189,7 +186,7 @@
             flex: 1;
             opacity: 0;
             transition: opacity 0.3s ease;
-            font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem);
         }
 
         .upcoming-card:hover .hover-text {
@@ -197,13 +194,13 @@
         }
 
         .upcoming-card .image-container {
-            width: 90px;
+            width: clamp(70px, 15vw, 90px);
             text-align: right;
         }
 
         .upcoming-card img {
             width: 100%;
-            max-width: 90px;
+            max-width: clamp(70px, 15vw, 90px);
             height: auto;
             object-fit: contain;
         }
@@ -215,7 +212,7 @@
             }
 
             .navbar-nav .nav-link {
-                font-size: 0.65rem;
+                font-size: 0.75rem;
                 margin-left: 0.25rem;
             }
 
@@ -234,10 +231,11 @@
 
             .movie-card .btn {
                 max-width: 100px;
+                font-size: 0.625rem;
             }
 
             .movie-card p {
-                font-size: 0.6rem;
+                font-size: 0.625rem;
             }
 
             .upcoming-card {
@@ -273,29 +271,29 @@
                 max-width: 120px;
             }
 
-            .upcoming-card img {
-                max-width: 80px;
-            }
-
             .upcoming-card .image-container {
                 width: 80px;
             }
+
+            .upcoming-card img {
+                max-width: 80px;
+            }
         }
-        .toggler-icon {
-    width: 30px; /* Установите нужный размер */
-    height: 30px;
-    object-fit: contain;
-}
-        
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="logo.svg" alt="Логотип"></a>
+            <a class="navbar-brand" href="#"><img src="logo.svg" alt="Логотип Кинопоиск"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
-                     <img src="menu.svg" alt="Меню" class="toggler-icon">
+                <img src="menu.svg" alt="Меню" class="toggler-icon">
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
@@ -306,7 +304,7 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Установить на TV</a></li>
-                    <li class="nav-item"><img src="profile.png" class="profile-img" alt="Профиль"></li>
+                    <li class="nav-item"><img src="profile.png" class="profile-img" alt="Профиль пользователя"></li>
                 </ul>
             </div>
         </div>
@@ -325,22 +323,22 @@
         <!-- New Releases -->
         <div class="section-title">Новинки</div>
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film1.png" alt="Фильм 1" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film2.png" alt="Фильм 2" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
-                <img src="film3.png" alt="Фильм 3" class="img-fluid">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
+                <img src="film3.png" alt="Фilm 3" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film4.png" alt="Фильм 4" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
@@ -350,22 +348,22 @@
         <!-- Popular -->
         <div class="section-title">Популярные</div>
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film1.png" alt="Фильм 1" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film2.png" alt="Фильм 2" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film3.png" alt="Фильм 3" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film4.png" alt="Фильм 4" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
@@ -375,22 +373,22 @@
         <!-- Today's Picks -->
         <div class="section-title">Выбираем сегодня</div>
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film1.png" alt="Фильм 1" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film2.png" alt="Фильм 2" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film3.png" alt="Фильм 3" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film4.png" alt="Фильм 4" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
@@ -400,22 +398,22 @@
         <!-- Trending Adventures -->
         <div class="section-title">В тренде: приключения</div>
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film1.png" alt="Фильм 1" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film2.png" alt="Фильм 2" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film3.png" alt="Фильм 3" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
             </div>
-            <div class="col-6 col-sm-4 col-md-3 movie-card">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 movie-card">
                 <img src="film4.png" alt="Фильм 4" class="img-fluid">
                 <button class="btn btn-primary">Смотреть</button>
                 <p>от 599 ₽</p>
@@ -435,7 +433,7 @@
                         <p>Продолжение увлекательной истории народа Ни'Аи</p>
                     </div>
                     <div class="image-container">
-                        <img src="avatar.jpg" alt="Аватар">
+                        <img src="avatar.jpg" alt="Аватар: Путь воды">
                     </div>
                 </div>
             </div>
@@ -446,10 +444,10 @@
                 </div>
                 <div class="flex-container">
                     <div class="hover-text">
-                        <p>Фильм продолжает историю исброного по имене Нео</p>
+                        <p>Фильм продолжает историю избранного по имени Нео</p>
                     </div>
                     <div class="image-container">
-                        <img src="matrix.jpg" alt="Матрица">
+                        <img src="matrix.jpg" alt="Матрица: Воскрешение">
                     </div>
                 </div>
             </div>
@@ -460,21 +458,23 @@
                 </div>
                 <div class="flex-container">
                     <div class="hover-text">
-                        <p>Продолжение истории о Питоре Паркере и его подружки Мэджей</p>
+                        <p>Продолжение истории о Питере Паркере и его подруги Мэри Джейн</p>
                     </div>
                     <div class="image-container">
-                        <img src="spider.jpg" alt="Человек-паук">
+                        <img src="spider.jpg" alt="Человек-паук: Нет пути домой">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <script>
-    document.querySelector('.navbar-toggler').addEventListener('click', function () {
-        const icon = this.querySelector('.toggler-icon');
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        icon.src = isExpanded ? 'close.svg' : 'menu.svg'; // Замените close.svg на ваш файл
-    });
-</script>
+        document.querySelector('.navbar-toggler').addEventListener('click', function () {
+            const icon = this.querySelector('.toggler-icon');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            icon.src = isExpanded ? 'close.svg' : 'menu.svg';
+        });
+    </script>
 </body>
-</html> 
+</html>
